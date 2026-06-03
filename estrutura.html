@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Estrutura do Site · Minicurso Saber Libras</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#081427; --navy2:#0E2143; --card:#0E2143; --line:rgba(54,166,255,.22);
+  --blue:#36A6FF; --blue2:#1E7BE0; --green:#18A957; --light:#EAF1FB; --muted:#9FB4D4;
+  --h:'Sora',sans-serif; --b:'Poppins',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--b);background:
+  radial-gradient(1000px 500px at 80% -10%,rgba(54,166,255,.14),transparent 60%),
+  radial-gradient(800px 500px at 0% 100%,rgba(24,169,87,.08),transparent 60%),
+  var(--navy);color:var(--light);line-height:1.5;padding:0 0 60px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+h1,h2,h3,.num{font-family:var(--h)}
+.eyebrow{font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.muted{color:var(--muted)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(54,166,255,.14);color:var(--blue);border:1px solid var(--line)}
+.tag--green{background:rgba(24,169,87,.16);color:#5fe39a;border-color:rgba(24,169,87,.3)}
+.tag--amber{background:rgba(255,196,61,.14);color:#ffd166;border-color:rgba(255,196,61,.3)}
+
+/* header */
+header{padding:44px 0 26px;border-bottom:1px solid rgba(255,255,255,.07);text-align:center}
+header img{height:44px;margin:0 auto 18px;filter:brightness(0) invert(1)}
+header h1{font-size:clamp(1.7rem,4.5vw,2.7rem);font-weight:800;letter-spacing:.01em}
+header h1 span{color:var(--blue)}
+header p{color:var(--muted);margin-top:10px;font-size:1rem;max-width:680px;margin-left:auto;margin-right:auto}
+.header-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+/* section */
+section{margin-top:48px}
+.s-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.s-head .badge{width:38px;height:38px;flex:none;border-radius:11px;background:linear-gradient(180deg,var(--blue),var(--blue2));display:grid;place-items:center;font-family:var(--h);font-weight:800;color:#fff;font-size:1.1rem}
+.s-head h2{font-size:1.35rem;font-weight:700}
+.s-head p{color:var(--muted);font-size:.85rem}
+
+/* overview cards */
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g3,.g4,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+.card .big{font-family:var(--h);font-weight:800;font-size:1.8rem;color:var(--blue);line-height:1}
+.card p{color:var(--muted);font-size:.85rem}
+
+/* funnel flow */
+.flow{display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;gap:16px;align-items:stretch}
+.flow-rail{display:flex;flex-direction:column;align-items:center;flex:none;width:34px}
+.flow-dot{width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,var(--blue),var(--blue2));display:grid;place-items:center;font-family:var(--h);font-weight:800;color:#fff;font-size:.9rem;flex:none}
+.flow-line{width:2px;flex:1;background:linear-gradient(var(--blue),rgba(54,166,255,.25));min-height:18px}
+.flow-step:last-child .flow-line{display:none}
+.flow-body{flex:1;padding-bottom:18px}
+.flow-body .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.flow-body h3{font-size:1rem;font-weight:600}
+.flow-body .route{font-family:var(--h);font-size:.72rem;color:var(--blue);font-weight:700}
+.flow-body p{color:var(--muted);font-size:.85rem;margin-top:4px}
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:560px){.branch{grid-template-columns:1fr}}
+.branch .box{border-style:dashed}
+.branch .b-q{border-color:rgba(24,169,87,.4)}
+.branch .b-q .route{color:#5fe39a}
+
+/* LP sections list */
+.lp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:680px){.lp-grid{grid-template-columns:1fr}}
+.lp-item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.lp-item .n{font-family:var(--h);font-weight:800;color:var(--blue);font-size:.95rem;flex:none;width:26px}
+.lp-item b{font-weight:600;font-size:.92rem}
+.lp-item span{color:var(--muted);font-size:.8rem;display:block;margin-top:2px}
+
+/* features */
+.feat{display:flex;gap:11px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.feat .ic{font-size:1.3rem;flex:none}
+.feat b{font-weight:600;font-size:.9rem}
+.feat p{color:var(--muted);font-size:.8rem;margin-top:2px}
+
+/* status */
+.status{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.status{grid-template-columns:1fr}}
+.status-col{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.status-col.ok{border-color:rgba(24,169,87,.35)}
+.status-col.todo{border-color:rgba(255,196,61,.35)}
+.status-col h3{font-size:1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.status-col ul{list-style:none;display:grid;gap:9px}
+.status-col li{font-size:.86rem;color:var(--light);display:flex;gap:9px;align-items:flex-start}
+.status-col li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;margin-top:7px}
+.status-col.ok li::before{background:var(--green)}
+.status-col.todo li::before{background:#ffc43d}
+.status-col li small{color:var(--muted)}
+
+/* tech chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:100px;padding:8px 15px;font-size:.82rem;font-weight:500}
+.chip b{color:var(--blue)}
+
+footer{margin-top:54px;text-align:center;color:var(--muted);font-size:.78rem;border-top:1px solid rgba(255,255,255,.07);padding-top:26px}
+footer a{color:var(--blue);text-decoration:none}
+.link-live{display:inline-block;margin-top:6px;font-family:var(--h);font-weight:700;color:var(--blue)}
+@media print{body{background:#081427 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" alt="Saber Libras" />
+    <p class="eyebrow">Mapa da estrutura · Página de vendas</p>
+    <h1>Minicurso de Libras — <span>Estrutura do Site</span></h1>
+    <p>Visão completa de tudo o que foi construído: a oferta, o funil de vendas, as seções da página e os recursos de conversão.</p>
+    <div class="header-pills">
+      <span class="tag">HTML estático + Netlify Functions</span>
+      <span class="tag tag--green">No ar</span>
+      <span class="tag tag--amber">Estrutura do site "10 Jogos" adaptada</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1 · VISÃO GERAL -->
+  <section>
+    <div class="s-head"><div class="badge">1</div><div><h2>Visão geral da oferta</h2><p>O produto e a condição apresentados na página</p></div></div>
+    <div class="grid g4">
+      <div class="card"><h3>Produto</h3><p>Minicurso "Práticas de Conversação em Libras" — do zero à interação com surdos em <b>5 aulas</b>.</p></div>
+      <div class="card"><h3>Preço</h3><div class="big">R$47</div><p>De R$689 · ou 6x de R$8,82 · acesso vitalício</p></div>
+      <div class="card"><h3>Diferencial</h3><p>Método <b>INV</b> (Imersão Neurovisual) + dupla Camila (ouvinte) e Alcione (surda).</p></div>
+      <div class="card"><h3>Entrega</h3><p>Certificado de 10h, 3 bônus, comunidade e garantia incondicional de 7 dias.</p></div>
+    </div>
+  </section>
+
+  <!-- 2 · FUNIL -->
+  <section>
+    <div class="s-head"><div class="badge">2</div><div><h2>O funil de vendas (jornada do visitante)</h2><p>Da página até a venda — e a ascensão pós-compra</p></div></div>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-rail"><div class="flow-dot">1</div><div class="flow-line"></div></div>
+        <div class="flow-body"><div class="box"><span class="route">ANÚNCIO / INSTAGRAM</span><h3>Visitante chega na página</h3><p>Tráfego do Instagram (@saberlibras) e anúncios cai na landing page.</p></div></div></div>
+      <div class="flow-step"><div class="flow-rail"><div class="flow-dot">2</div><div class="flow-line"></div></div>
+        <div class="flow-body"><div class="box"><span class="route">/ (Landing Page)</span><h3>Página de vendas</h3><p>Apresenta dor, método, módulos, prova social e oferta de R$47. Captura cupom de 10% (roleta + quest).</p></div></div></div>
+      <div class="flow-step"><div class="flow-rail"><div class="flow-dot">3</div><div class="flow-line"></div></div>
+        <div class="flow-body"><div class="box"><span class="route">CHECKOUT (Hotmart)</span><h3>Pagamento</h3><p>Cartão, Pix ou Boleto. Cupom <b>LIBRAS10</b> aplicável. Garantia de 7 dias.</p></div></div></div>
+      <div class="flow-step"><div class="flow-rail"><div class="flow-dot">4</div><div class="flow-line"></div></div>
+        <div class="flow-body"><div class="box"><span class="route">/obrigado</span><h3>Pós-compra: vídeo + presente</h3><p>Confirmação, vídeo de boas-vindas e botão para resgatar o presente (gift quest).</p></div></div></div>
+      <div class="flow-step"><div class="flow-rail"><div class="flow-dot">5</div><div class="flow-line"></div></div>
+        <div class="flow-body"><div class="box"><span class="route">GIFT QUEST · 5 perguntas</span><h3>Qualificação da aluna</h3><p>5 perguntas estratégicas classificam o nível e o objetivo. Resultado define o próximo passo:</p>
+          <div class="branch">
+            <div class="box b-q"><span class="route">PERFIL FLUÊNCIA →</span><h3>Aula diagnóstica gratuita</h3><p>Agendamento de conversa (rumo ao curso completo).</p></div>
+            <div class="box"><span class="route">/oferta-especial →</span><h3>Libras em DOBRO</h3><p>Upsell do curso completo (12x R$49,90) com condição especial.</p></div>
+          </div>
+        </div></div></div>
+    </div>
+  </section>
+
+  <!-- 3 · ESTRUTURA DA LP -->
+  <section>
+    <div class="s-head"><div class="badge">3</div><div><h2>Estrutura da landing page (de cima para baixo)</h2><p>A sequência de persuasão da página principal</p></div></div>
+    <div class="lp-grid">
+      <div class="lp-item"><div class="n">01</div><div><b>Hero + Oferta</b><span>Headline, mockups dos materiais, preço R$47 e CTA principal</span></div></div>
+      <div class="lp-item"><div class="n">02</div><div><b>Contador regressivo</b><span>Urgência honesta da condição de lançamento</span></div></div>
+      <div class="lp-item"><div class="n">03</div><div><b>Diagnóstico de dores</b><span>4 dores clicáveis que revelam "que tipo de aprendiz você é"</span></div></div>
+      <div class="lp-item"><div class="n">04</div><div><b>Quem somos</b><span>Camila + Alcione, 15 anos, +201 mil seguidores</span></div></div>
+      <div class="lp-item"><div class="n">05</div><div><b>A solução / Método INV</b><span>Transformação em 5 aulas e como o método funciona</span></div></div>
+      <div class="lp-item"><div class="n">06</div><div><b>As 5 aulas (módulos)</b><span>Conversação, Saudações, Datilologia, Atendimento ao surdo</span></div></div>
+      <div class="lp-item"><div class="n">07</div><div><b>O que você recebe</b><span>Minicurso + Método INV + 3 bônus + certificado</span></div></div>
+      <div class="lp-item"><div class="n">08</div><div><b>Para quem é / não é</b><span>6 perfis ideais + exclusão honesta</span></div></div>
+      <div class="lp-item"><div class="n">09</div><div><b>Provas / números</b><span>+15 anos, +201k seguidores, certificado de 10h</span></div></div>
+      <div class="lp-item"><div class="n">10</div><div><b>Depoimentos</b><span>Relatos de alunas em colunas com rolagem</span></div></div>
+      <div class="lp-item"><div class="n">11</div><div><b>Garantia de 7 dias</b><span>Risco zero, reembolso total</span></div></div>
+      <div class="lp-item"><div class="n">12</div><div><b>Oferta (value stack)</b><span>R$642 em valor por R$47, com ancoragem explicada</span></div></div>
+      <div class="lp-item"><div class="n">13</div><div><b>Perguntas e respostas</b><span>7 objeções quebradas</span></div></div>
+      <div class="lp-item"><div class="n">14</div><div><b>CTA final + rodapé</b><span>Recap da oferta e dados legais (CNPJ)</span></div></div>
+    </div>
+  </section>
+
+  <!-- 4 · PÁGINAS INTERNAS -->
+  <section>
+    <div class="s-head"><div class="badge">4</div><div><h2>Páginas internas do funil</h2><p>Rotas que compõem todo o fluxo</p></div></div>
+    <div class="grid g3">
+      <div class="card"><span class="tag">/</span><h3 style="margin-top:8px">Landing Page</h3><p>Página de vendas principal</p></div>
+      <div class="card"><span class="tag">/obrigado</span><h3 style="margin-top:8px">Pós-compra</h3><p>Vídeo + resgate do presente</p></div>
+      <div class="card"><span class="tag">/oferta-especial</span><h3 style="margin-top:8px">Upsell</h3><p>Curso completo Libras em DOBRO</p></div>
+      <div class="card"><span class="tag">/qualification</span><h3 style="margin-top:8px">Qualificação</h3><p>Pesquisa de 3 perguntas</p></div>
+      <div class="card"><span class="tag">/scheduling</span><h3 style="margin-top:8px">Agendamento</h3><p>Calendário da aula diagnóstica</p></div>
+      <div class="card"><span class="tag">/admin</span><h3 style="margin-top:8px">Painel admin</h3><p>KPIs, funil e leads (protegido)</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · RECURSOS -->
+  <section>
+    <div class="s-head"><div class="badge">5</div><div><h2>Recursos de conversão & engajamento</h2><p>O que torna a página interativa e persuasiva</p></div></div>
+    <div class="grid g3">
+      <div class="feat"><span class="ic">🎯</span><div><b>Diagnóstico de dores</b><p>4 dores clicáveis que geram um "tipo de aprendiz" personalizado.</p></div></div>
+      <div class="feat"><span class="ic">⏳</span><div><b>Contador regressivo</b><p>Urgência da condição de lançamento por R$47.</p></div></div>
+      <div class="feat"><span class="ic">🎡</span><div><b>Roleta de cupom</b><p>Exit-intent: gira e ganha 10% OFF (cupom LIBRAS10).</p></div></div>
+      <div class="feat"><span class="ic">🎁</span><div><b>Quest gamificado</b><p>Captura nome, e-mail e WhatsApp em troca do cupom.</p></div></div>
+      <div class="feat"><span class="ic">⭐</span><div><b>Prova social</b><p>Depoimentos de alunas em rolagem contínua.</p></div></div>
+      <div class="feat"><span class="ic">📊</span><div><b>Rastreamento de funil</b><p>Cada etapa é medida (Pixel, GA4 e painel admin próprio).</p></div></div>
+    </div>
+  </section>
+
+  <!-- 6 · STACK -->
+  <section>
+    <div class="s-head"><div class="badge">6</div><div><h2>Tecnologia & rastreamento</h2><p>Como o site foi construído</p></div></div>
+    <div class="chips">
+      <span class="chip">Hospedagem: <b>Netlify</b></span>
+      <span class="chip">Site rápido: <b>HTML estático</b></span>
+      <span class="chip">Back-end: <b>Netlify Functions</b></span>
+      <span class="chip">Checkout: <b>Hotmart</b></span>
+      <span class="chip">Rastreamento: <b>Meta Pixel + CAPI</b></span>
+      <span class="chip">Métricas: <b>Google Analytics 4</b></span>
+      <span class="chip">Painel próprio: <b>/admin</b></span>
+      <span class="chip">Fontes: <b>Sora + Poppins</b></span>
+      <span class="chip">Versionado no <b>GitHub</b></span>
+    </div>
+  </section>
+
+  <!-- 7 · STATUS -->
+  <section>
+    <div class="s-head"><div class="badge">7</div><div><h2>O que está pronto e o que falta configurar</h2><p>Transparência total do estado atual</p></div></div>
+    <div class="status">
+      <div class="status-col ok">
+        <h3>✅ Pronto e no ar</h3>
+        <ul>
+          <li>Página de vendas completa, responsiva e on-brand</li>
+          <li>Funil completo (pós-compra, upsell, qualificação, agendamento)</li>
+          <li>Gift quest, roleta de cupom e contador funcionando</li>
+          <li>Painel admin de KPIs e leads</li>
+          <li>Publicado na Netlify e versionado no GitHub</li>
+        </ul>
+      </div>
+      <div class="status-col todo">
+        <h3>⚙️ A preencher antes de anunciar</h3>
+        <ul>
+          <li>URL real do <b>checkout Hotmart</b> <small>(hoje aponta pro site oficial)</small></li>
+          <li><b>Pixel da Meta</b> e <b>Google Analytics</b> da Saber Libras</li>
+          <li>Checkout do <b>Libras em DOBRO</b> (upsell)</li>
+          <li>Senha do painel <b>/admin</b> (variável no Netlify)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Saber Libras · Minicurso de Libras — documento de estrutura para acompanhamento do projeto.</div>
+    <a class="link-live" href="https://saber-libras-minicurso.netlify.app" target="_blank" rel="noopener">🔗 Ver o site no ar: saber-libras-minicurso.netlify.app</a>
+  </footer>
+
+</div>
+</body>
+</html>

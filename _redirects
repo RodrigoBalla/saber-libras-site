@@ -1,3 +1,7 @@
+# Infográfico da estrutura (para apresentar ao cliente)
+/estrutura         /estrutura.html               200
+/estrutura/        /estrutura.html               200
+
 # Pretty URLs → SPA hash navigation
 /obrigado          /index.html#obrigado          200
 /obrigado/         /index.html#obrigado          200
