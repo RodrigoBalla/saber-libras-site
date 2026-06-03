@@ -1,0 +1,47 @@
+[build]
+  publish = "."
+
+[build.environment]
+  # ADMIN_PWD_HASH é um hash SHA-256 (não a senha) embutido no client
+  # apenas para gating cosmético do painel /admin. A validação real está
+  # server-side em netlify/functions/events.js (Bearer + ADMIN_PWD_HASH env).
+  # Por isso pedimos ao Netlify Secrets Scanner para ignorar essa key.
+  SECRETS_SCAN_OMIT_KEYS = "ADMIN_PWD_HASH"
+
+[functions]
+  directory = "netlify/functions"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/obrigado"
+  to   = "/index.html#obrigado"
+  status = 200
+
+[[redirects]]
+  from = "/obrigado/"
+  to   = "/index.html#obrigado"
+  status = 200
+
+[[redirects]]
+  from = "/oferta-especial"
+  to   = "/index.html#oferta-especial"
+  status = 200
+
+[[redirects]]
+  from = "/oferta-especial/"
+  to   = "/index.html#oferta-especial"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to   = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/"
+  to   = "/admin.html"
+  status = 200

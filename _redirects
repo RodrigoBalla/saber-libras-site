@@ -1,0 +1,7 @@
+# Pretty URLs → SPA hash navigation
+/obrigado          /index.html#obrigado          200
+/obrigado/         /index.html#obrigado          200
+/oferta-especial   /index.html#oferta-especial   200
+/oferta-especial/  /index.html#oferta-especial   200
+/admin             /index.html#admin             200
+/admin/            /index.html#admin             200

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roleta · 10% OFF</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --light:  #F5F6EE;
+      --yellow: #FECE08;
+      --dark:   #0A0A0A;
+      --font-h: 'Oswald', sans-serif;
+      --font-s: 'Montserrat', sans-serif;
+      --font-b: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: #1a1a1a;
+      color: var(--light);
+      font-family: var(--font-b);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    /* Botão demo só pra abrir a roleta nesta página standalone — remover quando for embedar */
+    .demo-btn {
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      padding: 18px 32px;
+      border-radius: 100px;
+      font-family: var(--font-h);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(254,206,8,.4);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SHARED KEYFRAMES (used by exit modal animations)
+       ═══════════════════════════════════════════════════════════ */
+    @keyframes questShake {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+    @keyframes questConfetti {
+      0%   { opacity: 1; transform: translateY(0) rotate(0); }
+      100% { opacity: 0; transform: translateY(600px) rotate(720deg); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXIT INTENT ROULETTE — overlay + modal + 3 stages
+       ═══════════════════════════════════════════════════════════ */
+    .exit-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: radial-gradient(ellipse at center, rgba(10,10,10,.9) 0%, rgba(0,0,0,.98) 80%);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 20px; overflow-y: auto;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .exit-overlay.is-open { display: flex; opacity: 1; }
+    .exit-modal {
+      position: relative;
+      width: 100%; max-width: 560px;
+      background:
+        radial-gradient(ellipse at top, rgba(254,206,8,.15) 0%, transparent 70%),
+        linear-gradient(160deg, #1a1a16 0%, #0A0A0A 100%);
+      border: 2px solid var(--yellow);
+      border-radius: 20px;
+      padding: 44px 40px 40px;
+      box-shadow:
+        0 0 0 1px rgba(254,206,8,.3),
+        0 40px 100px rgba(0,0,0,.85),
+        0 0 140px rgba(254,206,8,.25);
+      transform: scale(.82) translateY(30px);
+      opacity: 0;
+      transition: transform .5s cubic-bezier(.2,.9,.3,1.25), opacity .4s ease;
+      overflow: hidden;
+    }
+    .exit-overlay.is-open .exit-modal {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+    .exit-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 38px; height: 38px;
+      border: none;
+      background: rgba(255,255,255,.06);
+      color: var(--light);
+      font-size: 1.5rem; line-height: 1;
+      border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s ease, transform .2s ease;
+      z-index: 10;
+    }
+    .exit-close:hover { background: rgba(254,206,8,.25); transform: rotate(90deg); }
+
+    .exit-header { text-align: center; margin-bottom: 20px; }
+    .exit-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--yellow), #ffe356);
+      color: var(--dark);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-family: var(--font-s);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 20px rgba(254,206,8,.45);
+      animation: exitBadgePulse 2s ease-in-out infinite;
+    }
+    @keyframes exitBadgePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(254,206,8,.45); }
+      50%      { transform: scale(1.04); box-shadow: 0 8px 28px rgba(254,206,8,.6); }
+    }
+    .exit-header h2 {
+      font-family: var(--font-h); font-weight: 700;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      color: var(--light); line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .exit-header h2 span { color: var(--yellow); }
+    .exit-header p {
+      font-family: var(--font-b);
+      color: #b8b8b8;
+      font-size: .95rem;
+      line-height: 1.5;
+    }
+
+    .exit-stage { display: none; }
+    .exit-stage.is-active { display: block; animation: exitFadeIn .5s ease; }
+    @keyframes exitFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Roulette wheel ── */
+    .wheel-wrap {
+      position: relative;
+      width: 320px; height: 320px;
+      margin: 10px auto 24px;
+    }
+    .wheel-disc {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        from -15deg,
+        #FECE08 0deg 29deg,    #0a0a0a 29deg 31deg,
+        #1a1a1a 31deg 59deg,   #0a0a0a 59deg 61deg,
+        #FECE08 61deg 89deg,   #0a0a0a 89deg 91deg,
+        #1a1a1a 91deg 119deg,  #0a0a0a 119deg 121deg,
+        #FECE08 121deg 149deg, #0a0a0a 149deg 151deg,
+        #1a1a1a 151deg 179deg, #0a0a0a 179deg 181deg,
+        #FECE08 181deg 209deg, #0a0a0a 209deg 211deg,
+        #1a1a1a 211deg 239deg, #0a0a0a 239deg 241deg,
+        #FECE08 241deg 269deg, #0a0a0a 269deg 271deg,
+        #1a1a1a 271deg 299deg, #0a0a0a 299deg 301deg,
+        #FECE08 301deg 329deg, #0a0a0a 329deg 331deg,
+        #1a1a1a 331deg 359deg, #0a0a0a 359deg 360deg
+      );
+      border: 6px solid #2a2a20;
+      box-shadow:
+        0 0 0 3px var(--yellow),
+        0 0 60px rgba(254,206,8,.5),
+        0 0 100px rgba(254,206,8,.2),
+        inset 0 0 0 3px rgba(0,0,0,.4);
+      transform: rotate(0deg);
+      transition: transform 5.5s cubic-bezier(.17,.67,.25,1.05);
+    }
+    .wheel-labels {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      border-radius: 50%;
+      transform: rotate(0deg);
+      transition: transform 5.5s cubic-bezier(.17,.67,.25,1.05);
+    }
+    .wheel-label {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 78px;
+      margin-left: -39px;
+      margin-top: -7px;
+      font-family: var(--font-h);
+      font-size: .82rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      transform-origin: center center;
+      letter-spacing: 0;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .wheel-label--gold {
+      color: #0A0A0A;
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
+    .wheel-label--dark {
+      color: #ffffff;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      opacity: .9;
+      text-shadow: 0 1px 2px rgba(0,0,0,.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      gap: 3px;
+    }
+    .wheel-label__emoji {
+      font-size: 1.15em;
+      text-shadow: none;
+      opacity: 1;
+    }
+    .wheel-hub {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 78px; height: 78px;
+      margin-left: -39px; margin-top: -39px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffe356 0%, var(--yellow) 40%, #c9a500 100%);
+      border: 3px solid #0A0A0A;
+      box-shadow:
+        0 0 0 3px var(--yellow),
+        0 8px 24px rgba(0,0,0,.8),
+        inset 0 4px 12px rgba(255,255,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark);
+      font-family: var(--font-h);
+      font-weight: 900;
+      font-size: .8rem;
+      z-index: 3;
+      letter-spacing: .05em;
+    }
+    .wheel-pointer {
+      position: absolute;
+      left: 50%; top: -10px;
+      margin-left: -18px;
+      width: 36px; height: 44px;
+      z-index: 4;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.8));
+    }
+    .wheel-pointer svg { width: 100%; height: 100%; }
+
+    .exit-spin-btn {
+      display: block;
+      width: 100%; max-width: 340px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--yellow), #ffe356);
+      color: var(--dark);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font-h);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(254,206,8,.5), inset 0 2px 0 rgba(255,255,255,.4);
+      transition: transform .2s ease, box-shadow .25s ease;
+      animation: exitSpinPulse 1.8s ease-in-out infinite;
+    }
+    .exit-spin-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(254,206,8,.65);
+    }
+    .exit-spin-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      animation: none;
+    }
+    @keyframes exitSpinPulse {
+      0%, 100% { box-shadow: 0 10px 30px rgba(254,206,8,.5), inset 0 2px 0 rgba(255,255,255,.4); }
+      50%      { box-shadow: 0 14px 44px rgba(254,206,8,.75), inset 0 2px 0 rgba(255,255,255,.4); }
+    }
+    .exit-spin-btn__icon { display: inline-block; margin-right: 8px; }
+    .exit-stage--wheel .exit-header { margin-bottom: 4px; }
+
+    /* ── Prize banner (stage 2) ── */
+    .exit-prize-banner {
+      text-align: center;
+      padding: 22px 20px;
+      background: linear-gradient(135deg, rgba(254,206,8,.2), rgba(254,206,8,.05));
+      border: 2px solid var(--yellow);
+      border-radius: 14px;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+      animation: exitPrizeGlow 2s ease-in-out infinite;
+    }
+    @keyframes exitPrizeGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(254,206,8,.3); }
+      50%      { box-shadow: 0 0 30px 4px rgba(254,206,8,.25); }
+    }
+    .exit-prize-banner__label {
+      font-family: var(--font-s);
+      font-size: .7rem;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .exit-prize-banner__value {
+      font-family: var(--font-h);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(254,206,8,.6);
+    }
+    .exit-prize-banner__value small { font-size: 1.1rem; font-weight: 700; }
+
+    /* ── Form (stage 2) ── */
+    .exit-form-instr {
+      text-align: center;
+      font-family: var(--font-b);
+      color: #b8b8b8;
+      font-size: .92rem;
+      margin-bottom: 18px;
+    }
+    .exit-form-instr strong { color: var(--yellow); }
+    .exit-field { position: relative; margin-bottom: 14px; }
+    .exit-field input {
+      width: 100%;
+      background: rgba(0,0,0,.55);
+      border: 2px solid rgba(254,206,8,.35);
+      border-radius: 12px;
+      padding: 16px 18px;
+      color: var(--light);
+      font-family: var(--font-b);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .exit-field input::placeholder { color: rgba(245,246,238,.35); }
+    .exit-field input:focus {
+      border-color: var(--yellow);
+      background: rgba(0,0,0,.75);
+      box-shadow: 0 0 0 4px rgba(254,206,8,.18);
+    }
+    .exit-field input.is-error {
+      border-color: #ff5757;
+      box-shadow: 0 0 0 4px rgba(255,87,87,.2);
+      animation: questShake .4s ease;
+    }
+    .exit-submit {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, var(--yellow), #ffe356);
+      color: var(--dark);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font-h);
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(254,206,8,.45);
+      transition: transform .2s ease, box-shadow .25s ease;
+    }
+    .exit-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(254,206,8,.6);
+    }
+
+    /* ── Coupon (stage 3) ── */
+    .exit-trophy {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 8px;
+      animation: exitTrophyBounce .9s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes exitTrophyBounce {
+      0%   { transform: scale(0) rotate(-180deg); opacity: 0; }
+      60%  { transform: scale(1.2) rotate(15deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    .exit-coupon-label {
+      text-align: center;
+      font-family: var(--font-s);
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .exit-coupon {
+      display: flex;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(254,206,8,.15), rgba(254,206,8,.04));
+      border: 2px dashed var(--yellow);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 6px;
+      position: relative;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .exit-coupon:hover {
+      transform: translateY(-2px);
+      border-color: #ffe356;
+      box-shadow: 0 14px 30px rgba(254,206,8,.22);
+    }
+    .exit-coupon:active { transform: scale(.98); }
+    .exit-coupon.is-copied {
+      border-color: #4ade80;
+      background: linear-gradient(135deg, rgba(74,222,128,.18), rgba(74,222,128,.05));
+    }
+    .exit-coupon-hint {
+      text-align: center;
+      font-family: var(--font-s);
+      font-size: .76rem;
+      color: #aaa;
+      margin-bottom: 14px;
+      letter-spacing: .04em;
+    }
+    .exit-coupon-hint.is-copied { color: #4ade80; }
+    .exit-coupon__code {
+      flex: 1;
+      padding: 18px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--yellow);
+      text-align: center;
+      letter-spacing: .08em;
+      text-shadow: 0 0 18px rgba(254,206,8,.5);
+      user-select: all;
+    }
+    .exit-coupon__copy {
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      padding: 0 22px;
+      font-family: var(--font-h);
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .2s ease;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .exit-coupon__copy:hover { background: #ffe356; }
+    .exit-coupon__copy.is-copied { background: #4ade80; color: var(--dark); }
+    .exit-coupon__copy svg { width: 16px; height: 16px; }
+
+    .exit-countdown {
+      text-align: center;
+      padding: 12px 16px;
+      background: rgba(255,87,87,.12);
+      border: 1px solid rgba(255,87,87,.35);
+      border-radius: 10px;
+      margin-bottom: 18px;
+      font-family: var(--font-s);
+      font-size: .82rem;
+      color: #ffb8b8;
+    }
+    .exit-countdown strong {
+      color: #ff8787;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    .exit-countdown-label { display: block; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 2px; }
+
+    .exit-cta {
+      display: block;
+      width: 100%;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, var(--yellow), #ffe356);
+      color: var(--dark);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font-h);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+      box-shadow: 0 12px 34px rgba(254,206,8,.5);
+      transition: transform .2s ease, box-shadow .25s ease;
+      animation: exitSpinPulse 1.8s ease-in-out infinite;
+    }
+    .exit-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(254,206,8,.65);
+    }
+
+    .exit-confetti {
+      position: absolute; inset: 0; pointer-events: none;
+      overflow: hidden; border-radius: 20px;
+    }
+    .exit-confetti i {
+      position: absolute;
+      width: 10px; height: 14px;
+      top: -20px;
+      opacity: 0;
+      animation: questConfetti 1.8s ease-out forwards;
+    }
+
+    @media(max-width:560px){
+      .exit-modal { padding: 36px 20px 28px; }
+      .wheel-wrap { width: min(280px, 78vw); height: min(280px, 78vw); }
+      .wheel-hub { width: 66px; height: 66px; margin-left: -33px; margin-top: -33px; font-size: .72rem; }
+      .wheel-label { width: 64px; margin-left: -32px; font-size: .68rem; }
+      .wheel-label--dark { font-size: .52rem; }
+      .exit-header h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão demo só pra abrir a roleta nesta página standalone — apague quando integrar em outro projeto -->
+  <button class="demo-btn" onclick="openExitModal()">🎡 Abrir roleta de teste</button>
+
+  <!-- ══════════════════════════════════════════════════════════
+       EXIT INTENT: ROULETTE MODAL
+  ══════════════════════════════════════════════════════════ -->
+  <div class="exit-overlay" id="exitOverlay" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+    <div class="exit-modal">
+      <button class="exit-close" type="button" aria-label="Fechar" onclick="closeExitModal()">×</button>
+
+      <!-- STAGE 1: WHEEL -->
+      <div class="exit-stage exit-stage--wheel is-active" data-stage="wheel">
+        <div class="exit-header">
+          <div class="exit-badge">⚡ Última chance</div>
+          <h2 id="exitTitle">Espera! Você ganhou<br/><span>uma chance grátis</span></h2>
+          <p>Gire a roleta e tente um desconto exclusivo antes de sair</p>
+        </div>
+
+        <div class="wheel-wrap">
+          <div class="wheel-pointer">
+            <svg viewBox="0 0 36 44" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 44 L0 0 L36 0 Z" fill="#FECE08" stroke="#0A0A0A" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="18" cy="6" r="2.5" fill="#0A0A0A"/>
+            </svg>
+          </div>
+          <div class="wheel-disc" id="wheelDisc"></div>
+          <div class="wheel-labels" id="wheelLabels">
+            <!-- 12 fatias de 30° — texto radial. Emoji em linha separada abaixo do texto -->
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(0deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(30deg) translateY(-105px)"><span>Vish...</span><span class="wheel-label__emoji">🥲</span></div>
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(60deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(90deg) translateY(-105px)"><span>Quase!</span><span class="wheel-label__emoji">😅</span></div>
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(120deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(150deg) translateY(-105px)"><span>Tá frio</span><span class="wheel-label__emoji">🥶</span></div>
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(180deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(210deg) translateY(-105px)"><span>Hmmm</span><span class="wheel-label__emoji">🤔</span></div>
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(240deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(270deg) translateY(-105px)"><span>Por pouco!</span><span class="wheel-label__emoji">😬</span></div>
+            <div class="wheel-label wheel-label--gold" style="transform: rotate(300deg) translateY(-105px)">10% OFF</div>
+            <div class="wheel-label wheel-label--dark" style="transform: rotate(330deg) translateY(-105px)"><span>Tenta lá!</span><span class="wheel-label__emoji">🙃</span></div>
+          </div>
+          <div class="wheel-hub" id="wheelHub">GIRAR</div>
+        </div>
+
+        <button class="exit-spin-btn" id="spinBtn" type="button" onclick="spinRoulette()">
+          <span class="exit-spin-btn__icon">🎡</span>GIRAR A ROLETA
+        </button>
+      </div>
+
+      <!-- STAGE 2: FORM -->
+      <div class="exit-stage" data-stage="form">
+        <div class="exit-prize-banner">
+          <div class="exit-prize-banner__label">🎉 Você ganhou</div>
+          <div class="exit-prize-banner__value">10% <small>OFF</small></div>
+        </div>
+        <p class="exit-form-instr">Preencha seus dados para <strong>liberar seu cupom</strong> exclusivo:</p>
+        <div class="exit-field">
+          <input type="text" id="exitName" placeholder="Seu nome completo" autocomplete="name" />
+        </div>
+        <div class="exit-field">
+          <input type="email" id="exitEmail" placeholder="seu@email.com" autocomplete="email" />
+        </div>
+        <div class="exit-field">
+          <input type="tel" id="exitPhone" placeholder="(11) 99999-9999" autocomplete="tel" />
+        </div>
+        <button class="exit-submit" type="button" onclick="generateCoupon()">
+          LIBERAR MEU CUPOM →
+        </button>
+      </div>
+
+      <!-- STAGE 3: COUPON -->
+      <div class="exit-stage" data-stage="coupon">
+        <div class="exit-trophy">🏆</div>
+        <div class="exit-coupon-label">Seu cupom de 10% off está pronto</div>
+        <div class="exit-coupon" id="couponCard" onclick="copyCoupon()" role="button" tabindex="0" aria-label="Clique para copiar o cupom">
+          <span class="exit-coupon__code" id="couponCode">EJC10</span>
+          <button class="exit-coupon__copy" id="copyBtn" type="button" onclick="event.stopPropagation();copyCoupon()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
+            COPIAR
+          </button>
+        </div>
+        <div class="exit-coupon-hint" id="couponHint">👆 Toque para copiar o código</div>
+        <div class="exit-countdown">
+          <span class="exit-countdown-label">Válido por</span>
+          <strong id="couponTimer">30:00</strong>
+        </div>
+        <button class="exit-cta" type="button" onclick="exitToCheckout()">
+          USAR CUPOM AGORA →
+        </button>
+      </div>
+
+      <div class="exit-confetti" id="exitConfetti" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script>
+    // Stub do Track (no projeto real, substituir pelo Track real ou GA/Pixel)
+    window.Track = window.Track || { event: function(){} };
+    // Stub do checkout (no projeto real, redirecionar pra URL de pagamento)
+    function openCheckout() {
+      alert('Aqui o usuário iria pro checkout (Eduzz, Hotmart, etc).');
+    }
+
+    const EXIT_KEY       = 'w4f_exit_shown';
+    const EXIT_LEAD_KEY  = 'w4f_exit_lead';
+    const COUPON_KEY     = 'w4f_exit_coupon';
+    const COUPON_END_KEY = 'w4f_exit_coupon_end';
+
+    function openExitModal() {
+      const ov = document.getElementById('exitOverlay');
+      if (!ov || ov.classList.contains('is-open')) return;
+      // No projeto real: respeite a flag de sessao pra nao reabrir.
+      // sessionStorage.setItem(EXIT_KEY, '1');
+      window.Track.event('abriu_exit_roleta');
+      exitGoStage('wheel');
+      ov.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeExitModal() {
+      const ov = document.getElementById('exitOverlay');
+      if (!ov) return;
+      ov.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function exitGoStage(name) {
+      document.querySelectorAll('.exit-stage').forEach(s => s.classList.remove('is-active'));
+      const t = document.querySelector('.exit-stage[data-stage="' + name + '"]');
+      if (t) t.classList.add('is-active');
+    }
+
+    // ── Roulette spin (sempre ganha 10% OFF, com efeito de peso) ──
+    let isSpinning = false;
+    function spinRoulette() {
+      if (isSpinning) return;
+      const disc   = document.getElementById('wheelDisc');
+      const labels = document.getElementById('wheelLabels');
+      const hub    = document.getElementById('wheelHub');
+      const btn    = document.getElementById('spinBtn');
+      if (!disc || !btn) return;
+
+      isSpinning = true;
+      window.Track.event('girou_roleta');
+      btn.disabled = true;
+      btn.textContent = 'GIRANDO…';
+      if (hub) hub.textContent = '…';
+
+      // Reset de transition pra permitir re-spin sem travar
+      disc.style.transition = 'none';
+      if (labels) labels.style.transition = 'none';
+      void disc.offsetWidth; // force reflow
+
+      // === ANIMAÇÃO COM EFEITO DE PESO ===========================
+      // 12 segs de 30°. Premios em segs pares (0,2,4,6,8,10).
+      // 1) Gira em slowmotion ULTRAPASSANDO o 10% OFF e parando no preto
+      // 2) Pelo "peso" da roleta volta -30° devagar caindo no 10% OFF
+      const winningSegs = [0, 2, 4, 6, 8, 10];
+      const pickWin     = winningSegs[Math.floor(Math.random() * winningSegs.length)];
+      const winAngle    = 360 - (pickWin * 30);
+      const spins       = 6 + Math.floor(Math.random() * 2); // 6-7 voltas
+
+      const overshootRotation = spins * 360 + winAngle + 30;
+      const finalRotation     = overshootRotation - 30;
+
+      const phase1Duration = 5.5;
+      const phase2Duration = 1.6;
+      const easeFwd  = 'cubic-bezier(.08,.78,.18,1)';
+      const easeBack = 'cubic-bezier(.45,.05,.55,.95)';
+
+      // FASE 1: gira ate o setor preto (overshoot)
+      requestAnimationFrame(() => {
+        disc.style.transition   = 'transform ' + phase1Duration + 's ' + easeFwd;
+        if (labels) labels.style.transition = 'transform ' + phase1Duration + 's ' + easeFwd;
+        disc.style.transform   = 'rotate(' + overshootRotation + 'deg)';
+        if (labels) labels.style.transform = 'rotate(' + overshootRotation + 'deg)';
+      });
+
+      // FASE 2: volta -30° pelo "peso" caindo no 10% OFF
+      setTimeout(() => {
+        if (hub) hub.textContent = '🥲';
+        setTimeout(() => {
+          disc.style.transition   = 'transform ' + phase2Duration + 's ' + easeBack;
+          if (labels) labels.style.transition = 'transform ' + phase2Duration + 's ' + easeBack;
+          disc.style.transform   = 'rotate(' + finalRotation + 'deg)';
+          if (labels) labels.style.transform = 'rotate(' + finalRotation + 'deg)';
+
+          setTimeout(() => {
+            if (hub) hub.textContent = '🎉';
+            setTimeout(() => {
+              isSpinning = false;
+              btn.disabled = false;
+              btn.textContent = 'GIRAR A ROLETA';
+              exitGoStage('form');
+              setTimeout(() => {
+                const f = document.getElementById('exitName');
+                if (f) f.focus();
+              }, 350);
+            }, 800);
+          }, phase2Duration * 1000 + 50);
+        }, 250);
+      }, phase1Duration * 1000 + 50);
+    }
+
+    // ── Form → coupon ──
+    function generateCoupon() {
+      const name  = document.getElementById('exitName').value.trim();
+      const email = document.getElementById('exitEmail').value.trim();
+      const phone = document.getElementById('exitPhone').value.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      let valid = true;
+      const nameEl  = document.getElementById('exitName');
+      const emailEl = document.getElementById('exitEmail');
+      const phoneEl = document.getElementById('exitPhone');
+      [nameEl, emailEl, phoneEl].forEach(el => el && el.classList.remove('is-error'));
+
+      if (name.length < 2)                           { nameEl.classList.add('is-error');  valid = false; }
+      if (!emailRe.test(email))                      { emailEl.classList.add('is-error'); valid = false; }
+      if (phone.replace(/\D/g, '').length < 10)      { phoneEl.classList.add('is-error'); valid = false; }
+      if (!valid) return;
+
+      const code = 'EJC10';
+      let end = parseInt(localStorage.getItem(COUPON_END_KEY) || '0');
+      if (end < Date.now()) {
+        end = Date.now() + 30 * 60 * 1000; // 30 min
+        localStorage.setItem(COUPON_END_KEY, String(end));
+      }
+      localStorage.setItem(COUPON_KEY, code);
+      try {
+        localStorage.setItem(EXIT_LEAD_KEY, JSON.stringify({ name, email, phone, ts: Date.now() }));
+      } catch (e) {}
+
+      document.getElementById('couponCode').textContent = code;
+      exitGoStage('coupon');
+      fireExitConfetti();
+      startCouponTimer(end);
+    }
+
+    function copyCoupon() {
+      const code = document.getElementById('couponCode').textContent;
+      const btn  = document.getElementById('copyBtn');
+      const card = document.getElementById('couponCard');
+      const hint = document.getElementById('couponHint');
+      window.Track.event('copiou_cupom', { source: 'exit_roleta' });
+      const done = () => {
+        btn.classList.add('is-copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>COPIADO!';
+        if (card) card.classList.add('is-copied');
+        if (hint) {
+          hint.classList.add('is-copied');
+          hint.textContent = '✓ Cupom copiado! Cole no checkout.';
+        }
+        setTimeout(() => {
+          btn.classList.remove('is-copied');
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>COPIAR';
+          if (card) card.classList.remove('is-copied');
+          if (hint) {
+            hint.classList.remove('is-copied');
+            hint.textContent = '👆 Toque para copiar o código';
+          }
+        }, 2500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(done).catch(() => fallbackCopy(code, done));
+      } else {
+        fallbackCopy(code, done);
+      }
+    }
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      cb && cb();
+    }
+
+    function exitToCheckout() {
+      closeExitModal();
+      openCheckout();
+    }
+
+    // Acessibilidade: Enter/Espaço no card do cupom também copia
+    document.addEventListener('keydown', e => {
+      const card = document.getElementById('couponCard');
+      if (!card || document.activeElement !== card) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyCoupon(); }
+    });
+
+    // ── Countdown do cupom ──
+    let couponTimerInt = null;
+    function startCouponTimer(end) {
+      const el = document.getElementById('couponTimer');
+      if (!el) return;
+      if (couponTimerInt) clearInterval(couponTimerInt);
+      function tick() {
+        const d = Math.max(0, end - Date.now());
+        const m = Math.floor(d / 60000);
+        const s = Math.floor((d % 60000) / 1000);
+        el.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+        if (d <= 0) { clearInterval(couponTimerInt); el.textContent = 'EXPIRADO'; }
+      }
+      tick();
+      couponTimerInt = setInterval(tick, 1000);
+    }
+
+    function fireExitConfetti() {
+      const box = document.getElementById('exitConfetti');
+      if (!box) return;
+      box.innerHTML = '';
+      const colors = ['#FECE08', '#ffe356', '#ffffff', '#FECE08', '#c9a500'];
+      for (let i = 0; i < 60; i++) {
+        const c = document.createElement('i');
+        c.style.left = (Math.random() * 100) + '%';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay = (Math.random() * .6) + 's';
+        c.style.animationDuration = (1.4 + Math.random() * 1) + 's';
+        c.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        box.appendChild(c);
+      }
+      setTimeout(() => { box.innerHTML = ''; }, 2800);
+    }
+
+    // ── Mascara de telefone do form ──
+    document.addEventListener('input', e => {
+      if (e.target && e.target.id === 'exitPhone') {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 10)      v = v.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+        else if (v.length > 6)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+        else if (v.length > 2)  v = v.replace(/^(\d{2})(\d{0,5}).*/, '($1) $2');
+        else if (v.length > 0)  v = v.replace(/^(\d{0,2})/, '($1');
+        e.target.value = v;
+      }
+    });
+  </script>
+</body>
+</html>
