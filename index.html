@@ -2199,9 +2199,7 @@
     }
     .quem-somos__bg {
       position: absolute; inset: 0; z-index: 0;
-      background-image: url('https://librasemdobro.com.br/wp-content/uploads/2025/09/img-0008.jpg');
-      background-size: cover; background-position: 75% center;
-      background-repeat: no-repeat;
+      background: linear-gradient(135deg, rgba(30,123,224,.10), transparent 60%);
     }
     /* Mobile-only photo — hidden on desktop */
     .quem-somos__photo-mobile { display: none; }
@@ -4450,10 +4448,8 @@
 
   <div class="topbar" id="topbar">
     <div class="topbar__track" id="topbarTrack">
-      <span class="topbar__item"><span class="ico ico--sm"><svg><use href="#ico-flame"/></svg></span> Método INV · Imersão Neurovisual</span>
       <span class="topbar__item"><span class="ico ico--sm"><svg><use href="#ico-bolt"/></svg></span> De R$689 por R$47 · essa condição pode ser encerrada a qualquer momento</span>
       <span class="topbar__item"><span class="ico ico--sm"><svg><use href="#ico-check"/></svg></span> Risco zero · Garantia de 7 dias</span>
-      <span class="topbar__item"><span class="ico ico--sm"><svg><use href="#ico-flame"/></svg></span> Método INV · Imersão Neurovisual</span>
       <span class="topbar__item"><span class="ico ico--sm"><svg><use href="#ico-bolt"/></svg></span> De R$689 por R$47 · essa condição pode ser encerrada a qualquer momento</span>
     </div>
     <div class="topbar__viewers" id="topbarViewers">
@@ -4501,7 +4497,6 @@
                 <div class="book-cover__accent2"></div>
                 <div class="book-cover__top">
                   <span class="book-cover__label">Minicurso</span>
-                  <div class="book-cover__num">5</div>
                   <div class="book-cover__title">Aulas Práticas<br/>de Conversação<br/>em Libras</div>
                   <div class="book-cover__divider"></div>
                 </div>
@@ -4522,6 +4517,7 @@
             <div class="hero__price-old">De R$689,00</div>
             <div class="hero__price-lbl">Hoje apenas</div>
             <div class="hero__price-val"><sup>R$</sup>47</div>
+            <div style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1.05rem;margin-top:2px;text-align:center">ou 6x de R$8,82</div>
             <ul class="hero__includes">
               <li>✓ 5 aulas práticas de conversação</li>
               <li>✓ Método INV (Imersão Neurovisual)</li>
@@ -4546,6 +4542,8 @@
         <!-- RIGHT COLUMN: TEXT CONTENT -->
         <div class="hero__content fade-in">
 
+          <p style="font-family:var(--font-s);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--amber);margin-bottom:14px">Minicurso Práticas de Conversação em Libras</p>
+
           <h1 class="hero__title">
             Do Zero à<br/>
             <span>Interação com Surdos</span><br/>
@@ -4557,6 +4555,8 @@
               Não perca mais tempo em cursos longos e complexos. Em apenas <span style="color:var(--amber)">10 horas</span> você aprende o essencial de Libras para se comunicar com surdos no atendimento e no dia a dia.
             </strong>
           </p>
+
+          <img src="assets/professoras/duas.jpg" alt="Professoras Camila e Alcione — Saber Libras" style="margin-top:24px;border-radius:16px;border:1px solid rgba(54,166,255,.2);width:100%;max-width:440px;box-shadow:0 20px 50px -24px rgba(0,0,0,.7)" loading="eager" decoding="async" />
 
         </div><!-- /.hero__content -->
 
@@ -4647,11 +4647,11 @@
     <div class="container--wide">
       <div class="quem-somos__content">
         <div class="quem-somos__eyebrow-chip">
-          <span>Quem está por trás do método</span>
+          <span>Conheça suas professoras</span>
         </div>
-        <h2 class="section-title">15 anos ensinando<br/><span>Libras de verdade</span></h2>
-        <p>A <strong>Saber Libras</strong> nasceu da parceria entre <strong>Camila (ouvinte) e Alcione (surda)</strong>, professoras e intérpretes de Libras com mais de 15 anos de experiência. Juntas criaram o <strong>Método INV (Imersão Neurovisual)</strong>, que faz você aprender de forma rápida e sem esquecer.</p>
-        <p>Não é teoria. É Libras ensinada por quem <strong>vive a língua todos os dias</strong> — com a perspectiva de quem ouve e de quem é surda.</p>
+        <h2 class="section-title">Conheça Suas <span>Professoras</span></h2>
+        <p>Camila Zilio Lisbôa (ouvinte) e Alcione Dela Justina (surda) são professoras e intérpretes de Libras com mais de <strong>15 anos de experiência</strong>.</p>
+        <p>Criaram a empresa <strong>Saber Libras</strong> e desenvolveram o método de imersão neurovisual (INV) que garante que o aluno aprenda de forma rápida e sem esquecer o que aprendeu.</p>
 
         <div class="quem-somos__credentials">
           <div class="qs-cred">
@@ -4664,7 +4664,7 @@
           </div>
           <div class="qs-cred">
             <span class="qs-cred__icon"><svg><use href="#ico-check-circle"/></svg></span>
-            <span><strong>+201 mil pessoas</strong> acompanham a Saber Libras no Instagram</span>
+            <span><strong>+1.000 alunos</strong> já aprenderam Libras com a Saber Libras</span>
           </div>
         </div>
 
@@ -4679,11 +4679,17 @@
           </div>
         </div>
 
-        <!-- Foto das fundadoras — visível somente no mobile, proporcional -->
-        <img class="quem-somos__photo-mobile"
-             src="https://librasemdobro.com.br/wp-content/uploads/2025/09/img-0008.jpg"
-             alt="Camila e Alcione, fundadoras da Saber Libras"
-             loading="lazy" />
+        <!-- Retratos das professoras -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;max-width:420px">
+          <figure style="margin:0">
+            <img src="assets/professoras/camila.jpg" alt="Professora Camila Zilio Lisbôa" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+            <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Camila <span style="color:#9FB4D4;font-weight:400">(ouvinte)</span></figcaption>
+          </figure>
+          <figure style="margin:0">
+            <img src="assets/professoras/alcione.jpg" alt="Professora Alcione Dela Justina" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+            <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Alcione <span style="color:#9FB4D4;font-weight:400">(surda)</span></figcaption>
+          </figure>
+        </div>
       </div>
       <div class="quem-somos__stats">
         <div class="qs-stat">
@@ -4696,9 +4702,9 @@
         <div class="qs-stat">
           <div class="qs-stat__icon"><svg><use href="#ico-users"/></svg></div>
           <div class="qs-stat__val">
-            <span class="qs-stat__prefix">+</span><span class="qs-stat__num" data-target="201" data-suffix="k">0</span>
+            <span class="qs-stat__prefix">+</span><span class="qs-stat__num" data-target="1000" data-suffix="">0</span>
           </div>
-          <div class="qs-stat__lbl">Seguidores<br/>no Instagram</div>
+          <div class="qs-stat__lbl">Alunos<br/>formados</div>
         </div>
         <div class="qs-stat">
           <div class="qs-stat__icon"><svg><use href="#ico-box"/></svg></div>
@@ -4754,19 +4760,19 @@
       <div class="modules-grid">
         <div class="module-card">
           <img src="https://librasemdobro.com.br/wp-content/uploads/2025/08/FOTO-1-LIBRAS-PARA-CONVERSACAO-1024x576.webp" alt="Módulo 1: Libras para Conversação" loading="lazy" decoding="async" />
-          <div class="module-card__caption"><strong>Módulo 1 · Libras para Conversação</strong>As principais situações de uso da datilologia e dos sinais básicos do dia a dia.</div>
+          <div class="module-card__caption"><strong>Libras para Conversação</strong>As principais situações de uso da datilologia e dos sinais básicos do dia a dia.</div>
         </div>
         <div class="module-card">
           <img src="https://librasemdobro.com.br/wp-content/uploads/2025/08/FOTO-2-SAUDACOES-1024x588.webp" alt="Módulo 2: Saudações em Libras" loading="lazy" decoding="async" />
-          <div class="module-card__caption"><strong>Módulo 2 · Saudações em Libras</strong>Interaja com confiança desde o primeiro "olá". Quebre o gelo sem travar.</div>
+          <div class="module-card__caption"><strong>Saudações em Libras</strong>Interaja com confiança desde o primeiro "olá". Quebre o gelo sem travar.</div>
         </div>
         <div class="module-card">
           <img src="https://librasemdobro.com.br/wp-content/uploads/2025/08/FOTO-3-DATILOLOGIA-1-1024x560.webp" alt="Módulo 3: Alfabeto Manual (Datilologia)" loading="lazy" decoding="async" />
-          <div class="module-card__caption"><strong>Módulo 3 · Alfabeto Manual</strong>Soletre qualquer palavra com a datilologia e nunca mais trave numa conversa.</div>
+          <div class="module-card__caption"><strong>Alfabeto Manual (Datilologia)</strong>Soletre qualquer palavra com a datilologia e nunca mais trave numa conversa.</div>
         </div>
         <div class="module-card">
           <img src="https://librasemdobro.com.br/wp-content/uploads/2025/08/FOTO-4-ATENDIMENTO-AO-SURDO-1024x571.webp" alt="Módulo 4: Atendimento ao Surdo" loading="lazy" decoding="async" />
-          <div class="module-card__caption"><strong>Módulo 4 · Atendimento ao Surdo</strong>Acolha e ofereça um atendimento inclusivo e de excelência a pessoas surdas.</div>
+          <div class="module-card__caption"><strong>Atendimento ao Surdo</strong>Acolha e ofereça um atendimento inclusivo e de excelência a pessoas surdas.</div>
         </div>
       </div>
     </div>
@@ -4775,55 +4781,36 @@
   <!-- INCLUDES -->
   <section class="includes-section">
     <div class="container">
-      <p class="eyebrow text-center">O que você recebe</p>
-      <h2 class="section-title text-center">Tudo que você <span>recebe hoje</span></h2>
-      <p class="includes-subtitle">Tudo que você precisa para sair do zero e se comunicar em Libras</p>
+      <p class="eyebrow text-center">Bônus exclusivos</p>
+      <h2 class="section-title text-center">Ao se inscrever <span>HOJE</span>, você ainda leva 3 bônus</h2>
+      <p class="includes-subtitle">Materiais extras para acelerar e fixar o seu aprendizado de Libras</p>
 
-      <!-- 2 Hero products -->
-      <div class="includes-hero">
+      <div class="includes-hero" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
         <div class="include-hero-card">
-          <div class="include-hero-card__badge">Produto Principal</div>
-          <div class="include-hero-card__icon">
-            <div class="ico ico--xl ico--yellow"><svg><use href="#ico-book"/></svg></div>
-          </div>
-          <div class="include-hero-card__title">Minicurso de Conversação · 5 aulas</div>
-          <div class="include-hero-card__text">Datilologia, saudações, conversação e atendimento ao surdo. Aulas curtas, práticas e diretas ao ponto — você começa a aplicar já na primeira.</div>
-          <div class="include-hero-card__tag">&#10003; Comece a aplicar na 1ª aula</div>
+          <div class="include-hero-card__badge">Bônus 01</div>
+          <div class="include-hero-card__icon"><div class="ico ico--xl ico--yellow"><svg><use href="#ico-calendar"/></svg></div></div>
+          <div class="include-hero-card__title">Planejador Semanal Editável</div>
+          <div class="include-hero-card__text">Organize seus estudos de forma simples e prática, mantendo o foco.</div>
+          <div class="include-hero-card__tag"><s style="opacity:.55">De R$37</s> &nbsp;·&nbsp; Grátis hoje</div>
         </div>
         <div class="include-hero-card">
-          <div class="include-hero-card__badge">Metodologia Exclusiva</div>
-          <div class="include-hero-card__icon">
-            <div class="ico ico--xl ico--yellow"><svg><use href="#ico-star"/></svg></div>
-          </div>
-          <div class="include-hero-card__title">Método INV — Imersão Neurovisual</div>
-          <div class="include-hero-card__text">Você aprende dentro de contextos reais, com áudio de apoio. O método que tira a insegurança, acelera o aprendizado e faz você não esquecer.</div>
-          <div class="include-hero-card__tag">&#10003; Aprende rápido e retém</div>
+          <div class="include-hero-card__badge">Bônus 02</div>
+          <div class="include-hero-card__icon"><div class="ico ico--xl ico--yellow"><svg><use href="#ico-clipboard"/></svg></div></div>
+          <div class="include-hero-card__title">Exercícios Práticos</div>
+          <div class="include-hero-card__text">Coloque em ação o que aprendeu e teste seus conhecimentos.</div>
+          <div class="include-hero-card__tag"><s style="opacity:.55">De R$47</s> &nbsp;·&nbsp; Grátis hoje</div>
+        </div>
+        <div class="include-hero-card">
+          <div class="include-hero-card__badge">Bônus 03</div>
+          <div class="include-hero-card__icon"><div class="ico ico--xl ico--yellow"><svg><use href="#ico-star"/></svg></div></div>
+          <div class="include-hero-card__title">Masterclass "Libras Fácil"</div>
+          <div class="include-hero-card__text">Descubra expressões e sinais práticos para aplicar no dia a dia.</div>
+          <div class="include-hero-card__tag"><s style="opacity:.55">De R$47</s> &nbsp;·&nbsp; Grátis hoje</div>
         </div>
       </div>
 
-      <!-- 4 Bonus items -->
-      <div class="includes-bonus-label">+ Bônus e garantias inclusos na sua compra</div>
-      <div class="includes-grid">
-        <div class="include-card">
-          <div class="include-card__icon"><div class="ico ico--lg ico--yellow"><svg><use href="#ico-rocket"/></svg></div></div>
-          <div class="include-card__title">3 Bônus Exclusivos</div>
-          <div class="include-card__text">Planejador Semanal (R$37) + Exercícios Práticos (R$47) + Masterclass "Libras Fácil" (R$47) — grátis hoje.</div>
-        </div>
-        <div class="include-card">
-          <div class="include-card__icon"><div class="ico ico--lg ico--yellow"><svg><use href="#ico-trophy"/></svg></div></div>
-          <div class="include-card__title">Certificado de 10h</div>
-          <div class="include-card__text">Certificado oficial válido em todo o Brasil ao concluir as aulas.</div>
-        </div>
-        <div class="include-card">
-          <div class="include-card__icon"><div class="ico ico--lg ico--yellow"><svg><use href="#ico-box"/></svg></div></div>
-          <div class="include-card__title">Acesso Vitalício</div>
-          <div class="include-card__text">Entregue no e-mail em minutos. Estude no seu ritmo, para sempre.</div>
-        </div>
-        <div class="include-card">
-          <div class="include-card__icon"><div class="ico ico--lg ico--yellow"><svg><use href="#ico-shield"/></svg></div></div>
-          <div class="include-card__title">Garantia de 7 Dias</div>
-          <div class="include-card__text">Devolvemos 100% do valor. Sem perguntas, sem burocracia.</div>
-        </div>
+      <div class="cta-stack" style="margin-top:32px">
+        <button class="btn btn--primary" onclick="openCheckout()" data-cta="bonus_comprar_27">SIM! QUERO APRENDER LIBRAS DO JEITO MAIS FÁCIL →</button>
       </div>
     </div>
   </section>
@@ -4927,8 +4914,8 @@
         </div>
         <div class="proof-num">
           <div class="proof-num__icon"><div class="ico ico--lg ico--yellow"><svg><use href="#ico-users"/></svg></div></div>
-          <div class="proof-num__val" data-target="201" data-prefix="+" data-suffix="k">0</div>
-          <div class="proof-num__lbl">pessoas na comunidade @saberlibras no Instagram</div>
+          <div class="proof-num__val" data-target="1000" data-prefix="+" data-suffix="">0</div>
+          <div class="proof-num__lbl">alunos já aprenderam Libras com o método INV</div>
           <div class="proof-num__bar"></div>
         </div>
         <div class="proof-num">
@@ -5000,28 +4987,13 @@
   <section class="testi-section">
     <div class="container--wide">
       <p class="eyebrow text-center">Depoimentos reais</p>
-      <h2 class="section-title text-center">O relato de quem<br/><span>confiou no método</span></h2>
+      <h2 class="section-title text-center">O que Nossos <span>Alunos Dizem</span></h2>
       <p class="section-sub text-center" style="margin:12px auto 0">Veja o que alunas e alunos estão dizendo sobre o minicurso de Libras.</p>
 
-      <div class="testi-columns-wrap" id="testi-columns-wrap">
-
-        <!-- COLUNA 1 -->
-        <div class="testi-col">
-          <div class="testi-col__inner testi-col__inner--slow" id="col1">
-            <!-- items injected by JS -->
-          </div>
-        </div>
-
-        <!-- COLUNA 2 -->
-        <div class="testi-col">
-          <div class="testi-col__inner testi-col__inner--fast" id="col2"></div>
-        </div>
-
-        <!-- COLUNA 3 -->
-        <div class="testi-col">
-          <div class="testi-col__inner testi-col__inner--medium" id="col3"></div>
-        </div>
-
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:880px;margin:30px auto 0">
+        <img src="assets/depoimentos/dep1.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
+        <img src="assets/depoimentos/dep2.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
+        <img src="assets/depoimentos/dep3.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
       </div>
     </div>
   </section>
@@ -5082,7 +5054,8 @@
           <div class="price-stack__old">De R$689,00</div>
           <div class="price-stack__from">Hoje apenas</div>
           <div class="price-stack__val"><sup>R$</sup>47</div>
-          <div class="price-stack__note">à vista · ou 6x de R$8,82 · acesso vitalício</div>
+          <div style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1.4rem;margin-top:2px">ou 6x de R$8,82</div>
+          <div class="price-stack__note">à vista · acesso vitalício · Hotmart</div>
           <div style="font-size:.72rem;color:#7fa8d8;margin-top:8px;line-height:1.5">Condição de turma de lançamento. Quando as vagas se encerrarem, o valor volta ao normal.</div>
         </div>
         <div class="cta-stack">
@@ -5149,35 +5122,7 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <div class="container">
-      <h2>Sua Primeira Conversa em<br/>Libras Começa Hoje</h2>
-      <p>Por R$47 você tem acesso a tudo que precisa para sair do zero e se comunicar com confiança com pessoas surdas — no seu ritmo, com garantia de 7 dias.</p>
-
-      <!-- Recap visual logo acima do CTA: o que voce leva por R$47 -->
-      <div class="final-recap">
-        <div class="final-recap__title">Tudo isso por R$47 hoje:</div>
-        <ul class="final-recap__list">
-          <li>✓ <strong>5 aulas práticas</strong> de conversação em Libras</li>
-          <li>✓ <strong>Método INV</strong> (Imersão Neurovisual)</li>
-          <li>✓ <strong>3 bônus exclusivos</strong> + <strong>certificado de 10h</strong></li>
-          <li>✓ <strong>Acesso vitalício</strong> · estude no seu ritmo</li>
-          <li>✓ <strong>Garantia 7 dias</strong> · sem perguntas, sem burocracia</li>
-        </ul>
-      </div>
-
-      <div class="cta-stack">
-        <button class="btn btn--primary solution-section__cta" style="background:#fff;color:var(--green);border:2px solid #fff;" onclick="openCheckout()" data-cta="final_comprar_27">
-          SIM, QUERO APRENDER LIBRAS POR R$47 →
-        </button>
-        <button class="btn btn--ghost" onclick="openQuestModal()" data-cta="final_cupom" style="border-color:rgba(255,255,255,.5);color:#fff;">
-          🎁 Quero meu cupom 10% OFF antes
-        </button>
-      </div>
-      <p style="font-size:.75rem;color:rgba(255,255,255,.7);margin-top:12px">🔒 Compra 100% segura · Garantia de 7 dias · Acesso imediato</p>
-    </div>
-  </section>
+  <!-- (seção final removida conforme pedido) -->
 
   <div class="footer">
     <div class="footer__text">
@@ -5669,8 +5614,8 @@
         </div>
         <div class="qs-stat">
           <div class="qs-stat__icon"><svg><use href="#ico-users"/></svg></div>
-          <div class="qs-stat__val"><span class="qs-stat__prefix">+</span>201<span class="qs-stat__suffix">k</span></div>
-          <div class="qs-stat__lbl">Seguidores<br/>no Instagram</div>
+          <div class="qs-stat__val"><span class="qs-stat__prefix">+</span>1.000</div>
+          <div class="qs-stat__lbl">Alunos<br/>formados</div>
         </div>
         <div class="qs-stat">
           <div class="qs-stat__icon"><svg><use href="#ico-box"/></svg></div>
