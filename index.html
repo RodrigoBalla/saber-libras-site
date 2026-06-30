@@ -2245,6 +2245,22 @@
       margin-right: auto; max-width: 600px;
       text-align: left;
     }
+    /* Desktop: 2 colunas (texto | retratos das professoras) */
+    .quem-somos .container--wide {
+      display: grid; grid-template-columns: 1.15fr .85fr;
+      gap: 48px; align-items: center;
+    }
+    .quem-somos__content { grid-column: 1; max-width: 640px; margin-right: 0; }
+    .quem-somos__profs {
+      grid-column: 2; align-self: center; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .quem-somos__profs figure { margin: 0; }
+    .quem-somos__stats { grid-column: 1 / -1; margin-top: 6px; }
+    @media(max-width:768px){
+      .quem-somos .container--wide { grid-template-columns: 1fr; gap: 26px; }
+      .quem-somos__profs { max-width: 440px; margin: 0 auto; }
+    }
     .quem-somos__eyebrow-chip {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(54,166,255,.08);
@@ -4458,6 +4474,11 @@
     </div>
   </div>
 
+  <!-- Logo Saber Libras (topo) -->
+  <div style="text-align:center;background:var(--dark);padding:20px 16px 8px">
+    <img src="assets/logo-saberlibras.png" alt="Saber Libras" style="height:50px;width:auto;display:inline-block" decoding="async" />
+  </div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero__bg"></div>
@@ -4679,18 +4700,19 @@
           </div>
         </div>
 
-        <!-- Retratos das professoras -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;max-width:420px">
-          <figure style="margin:0">
-            <img src="assets/professoras/camila.jpg" alt="Professora Camila Zilio Lisbôa" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
-            <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Camila <span style="color:#9FB4D4;font-weight:400">(ouvinte)</span></figcaption>
-          </figure>
-          <figure style="margin:0">
-            <img src="assets/professoras/alcione.jpg" alt="Professora Alcione Dela Justina" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
-            <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Alcione <span style="color:#9FB4D4;font-weight:400">(surda)</span></figcaption>
-          </figure>
-        </div>
+      </div><!-- /.quem-somos__content -->
+
+      <div class="quem-somos__profs">
+        <figure style="margin:0">
+          <img src="assets/professoras/camila.jpg" alt="Professora Camila Zilio Lisbôa" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+          <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Camila <span style="color:#9FB4D4;font-weight:400">(ouvinte)</span></figcaption>
+        </figure>
+        <figure style="margin:0">
+          <img src="assets/professoras/alcione.jpg" alt="Professora Alcione Dela Justina" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+          <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Alcione <span style="color:#9FB4D4;font-weight:400">(surda)</span></figcaption>
+        </figure>
       </div>
+
       <div class="quem-somos__stats">
         <div class="qs-stat">
           <div class="qs-stat__icon"><svg><use href="#ico-trophy"/></svg></div>
@@ -4990,10 +5012,12 @@
       <h2 class="section-title text-center">O que Nossos <span>Alunos Dizem</span></h2>
       <p class="section-sub text-center" style="margin:12px auto 0">Veja o que alunas e alunos estão dizendo sobre o minicurso de Libras.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:880px;margin:30px auto 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1140px;margin:30px auto 0">
         <img src="assets/depoimentos/dep1.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
         <img src="assets/depoimentos/dep2.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
         <img src="assets/depoimentos/dep3.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
+        <img src="assets/depoimentos/dep4.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
+        <img src="assets/depoimentos/dep5.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(54,166,255,.2)" />
       </div>
     </div>
   </section>
@@ -5126,6 +5150,7 @@
 
   <div class="footer">
     <div class="footer__text">
+      <img src="assets/logo-saberlibras.png" alt="Saber Libras" style="height:42px;width:auto;display:block;margin:0 auto 16px;opacity:.95" decoding="async" /><br/>
       © 2026 Saber Libras · Todos os direitos reservados<br/>
       CNPJ: 41.753.432/0001-50<br/>
       Este produto é destinado a fins educacionais. Resultados podem variar conforme o esforço de cada pessoa.<br/>
