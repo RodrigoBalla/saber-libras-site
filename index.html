@@ -2258,8 +2258,10 @@
     .quem-somos__profs figure { margin: 0; }
     .quem-somos__stats { grid-column: 1 / -1; margin-top: 6px; }
     @media(max-width:768px){
-      .quem-somos .container--wide { grid-template-columns: 1fr; gap: 26px; }
-      .quem-somos__profs { max-width: 440px; margin: 0 auto; }
+      .quem-somos .container--wide { display: block; }
+      .quem-somos__content { grid-column: auto; max-width: 100%; margin-right: 0; }
+      .quem-somos__profs { grid-column: auto; max-width: 440px; margin: 22px auto 0; }
+      .quem-somos__stats { margin-top: 26px; }
     }
     .quem-somos__eyebrow-chip {
       display: inline-flex; align-items: center; gap: 10px;
