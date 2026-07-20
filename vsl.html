@@ -4482,110 +4482,74 @@
     <img src="assets/logo-saberlibras.png" alt="Saber Libras" style="height:50px;width:auto;display:inline-block" decoding="async" />
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO (VSL) -->
+  <section class="hero" style="padding:24px 0 40px">
     <div class="hero__bg"></div>
     <div class="hero__overlay"></div>
-    <div class="container--wide">
-      <div class="hero__row">
+    <div class="container">
+      <div style="max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:3">
 
-        <!-- LEFT COLUMN: EBOOKS + PRICE + BUTTON -->
-        <div class="hero__left-col">
+        <p style="font-family:var(--font-s);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--amber);margin-bottom:14px">Minicurso Práticas de Conversação em Libras</p>
 
-          <!-- EBOOKS MOCKUP -->
-          <div class="hero__ebook-wrap">
+        <h1 class="hero__title" style="font-size:clamp(1.7rem,5vw,2.8rem)">
+          Do Zero à <span>Interação com Surdos</span> em Apenas 10 Horas
+        </h1>
 
-            <!-- BÔNUS: Masterclass Libras Fácil -->
-            <div class="book-mockup book-mockup--bonus">
-              <div class="book-cover">
-                <div class="book-cover__accent book-cover__accent--green"></div>
-                <div class="book-cover__accent2 book-cover__accent2--green"></div>
-                <div class="book-cover__top">
-                  <span class="book-cover__label book-cover__label--green">Bônus</span>
-                  <span class="book-cover__label book-cover__label--kind">Masterclass</span>
-                  <div class="book-cover__title book-cover__title--sm">Libras<br/>Fácil</div>
-                  <div class="book-cover__divider book-cover__divider--green"></div>
-                  <div class="book-cover__sub">Expressões e sinais<br/>prontos pro<br/>dia a dia.</div>
-                </div>
-                <div class="book-cover__bottom">
-                  <img class="book-cover__logo" src="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" alt="Saber Libras" width="239" height="100" fetchpriority="high" decoding="async" />
-                  <span class="book-cover__author">Grátis na compra</span>
-                </div>
-              </div>
-            </div>
+        <p class="hero__sub" style="margin:16px auto 0;max-width:640px">
+          <strong>Assista o vídeo abaixo com o som ligado e descubra como se comunicar em Libras — mesmo começando do zero.</strong>
+        </p>
 
-            <!-- PRINCIPAL: Minicurso de Libras -->
-            <div class="book-mockup book-mockup--main">
-              <div class="book-cover">
-                <div class="book-cover__accent"></div>
-                <div class="book-cover__accent2"></div>
-                <div class="book-cover__top">
-                  <span class="book-cover__label">Minicurso</span>
-                  <div class="book-cover__title">Práticas de<br/>Conversação<br/>em Libras</div>
-                  <div class="book-cover__divider"></div>
-                </div>
-                <div class="book-cover__bottom">
-                  <img class="book-cover__logo" src="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" alt="Saber Libras" width="239" height="100" fetchpriority="high" decoding="async" />
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- PRICE & CTA UNDER EBOOKS -->
-          <div class="hero__price-box">
-            <div class="hero__offer-bar" id="offerBar" role="button" tabindex="0" aria-label="Minicurso + Bônus - Destacar materiais">
-              <span class="offer-bar__item offer-bar__pay">Minicurso</span>
-              <span class="offer-bar__item offer-bar__get">+ 3 Bônus</span>
-            </div>
-            <div class="hero__price-old">De R$689,00</div>
-            <div class="hero__price-lbl">Hoje apenas</div>
-            <div class="hero__price-val"><sup>R$</sup>47</div>
-            <div style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1.05rem;margin-top:2px;text-align:center">ou 6x de R$8,82</div>
-            <ul class="hero__includes">
-              <li>✓ 5 aulas práticas de conversação</li>
-              <li>✓ Método INV (Imersão Neurovisual)</li>
-              <li>✓ Certificado de 10h + acesso vitalício</li>
-              <li>✓ 3 bônus exclusivos inclusos</li>
-            </ul>
-            <div class="hero__price-note">Acesso imediato · Garantia de 7 dias</div>
-          </div>
-
-          <div class="cta-stack">
-            <button class="btn btn--primary pulsing hero__cta-btn" onclick="openCheckout()" data-cta="hero_comprar_27">
-              QUERO APRENDER LIBRAS DO JEITO MAIS FÁCIL →
-            </button>
-            <button class="btn btn--ghost" onclick="openQuestModal()" data-cta="hero_cupom">
-              🎁 Quero meu cupom 10% OFF antes
+        <!-- VSL VIDEO -->
+        <div style="position:relative;max-width:820px;margin:26px auto 0;border-radius:16px;overflow:hidden;border:1px solid rgba(232,171,59,.25);box-shadow:0 30px 80px -30px rgba(0,0,0,.85)">
+          <div style="position:relative;padding-top:56.25%;background:#000">
+            <iframe id="vslPlayer" style="position:absolute;inset:0;width:100%;height:100%;border:0"
+              src="https://player.vimeo.com/video/1206996090?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&controls=0&playsinline=1"
+              title="Minicurso de Libras — Saber Libras"
+              allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <button id="vslUnmute" type="button" aria-label="Ativar o som do vídeo"
+              style="position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(8,20,39,.45);border:0;cursor:pointer;color:#fff;font-family:var(--font-s);font-weight:800;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)">
+              <span style="font-size:2.6rem;line-height:1;animation:vslPulse 1.8s ease-in-out infinite">🔊</span>
+              <span style="background:linear-gradient(180deg,#B32D5C,#8E2249);padding:14px 30px;border-radius:100px;font-size:clamp(.9rem,2.6vw,1.1rem);box-shadow:0 10px 34px rgba(179,45,92,.55);text-transform:uppercase;letter-spacing:.02em">▶ Toque para ativar o som</span>
+              <span style="font-size:.78rem;font-weight:600;opacity:.85">Seu vídeo já está rodando</span>
             </button>
           </div>
-          <p class="hero__cta-note"><span class="ico ico--sm"><svg><use href="#ico-lock"/></svg></span> Compra 100% segura · <span class="ico ico--sm"><svg><use href="#ico-card"/></svg></span> Cartão, Pix ou Boleto · <span class="ico ico--sm"><svg><use href="#ico-box"/></svg></span> Entrega imediata</p>
+        </div>
+        <style>@keyframes vslPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}</style>
 
-        </div><!-- /.hero__left-col -->
+        <!-- PRECO COMPACTO -->
+        <div style="margin:22px auto 0;display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.04);border:1px solid rgba(232,171,59,.22);border-radius:14px;padding:12px 22px">
+          <span style="color:var(--muted,#B9A9AE);text-decoration:line-through;font-size:.9rem">De R$689</span>
+          <span style="font-family:var(--font-h);font-weight:700;color:#fff;font-size:1.6rem"><sup style="font-size:.8rem;color:var(--amber)">R$</sup>47</span>
+          <span style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1rem">ou 6x de R$8,82</span>
+        </div>
 
-        <!-- RIGHT COLUMN: TEXT CONTENT -->
-        <div class="hero__content fade-in">
+        <div class="cta-stack" style="max-width:520px;margin:22px auto 0">
+          <button class="btn btn--primary pulsing" onclick="openCheckout()" data-cta="hero_comprar_27">
+            QUERO APRENDER LIBRAS DO JEITO MAIS FÁCIL →
+          </button>
+          <button class="btn btn--ghost" onclick="openQuestModal()" data-cta="hero_cupom">
+            🎁 Quero meu cupom 10% OFF antes
+          </button>
+        </div>
+        <p class="hero__cta-note" style="justify-content:center;display:flex"><span class="ico ico--sm"><svg><use href="#ico-lock"/></svg></span> Compra 100% segura · <span class="ico ico--sm"><svg><use href="#ico-card"/></svg></span> Cartão, Pix ou Boleto · <span class="ico ico--sm"><svg><use href="#ico-box"/></svg></span> Entrega imediata</p>
 
-          <p style="font-family:var(--font-s);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--amber);margin-bottom:14px">Minicurso Práticas de Conversação em Libras</p>
+      </div>
+    </div>
 
-          <h1 class="hero__title">
-            Do Zero à<br/>
-            <span>Interação com Surdos</span><br/>
-            em Apenas 10 Horas
-          </h1>
-
-          <p class="hero__sub">
-            <strong>
-              Não perca mais tempo em cursos longos e complexos. Em apenas <span style="color:var(--amber)">10 horas</span> você aprende o essencial de Libras para se comunicar com surdos no atendimento e no dia a dia.
-            </strong>
-          </p>
-
-          <img src="assets/professoras/duas.jpg" alt="Professoras Camila e Alcione — Saber Libras" style="margin-top:24px;border-radius:16px;border:1px solid rgba(232,171,59,.2);width:100%;max-width:440px;box-shadow:0 20px 50px -24px rgba(0,0,0,.7)" loading="eager" decoding="async" />
-
-        </div><!-- /.hero__content -->
-
-      </div><!-- /.hero__row -->
-    </div><!-- /.container--wide -->
+    <script>
+    (function(){
+      var iframe=document.getElementById('vslPlayer'), btn=document.getElementById('vslUnmute'), player=null;
+      if(!iframe||!btn) return;
+      function loadAPI(cb){ if(window.Vimeo&&window.Vimeo.Player) return cb(); var sc=document.createElement('script'); sc.src='https://player.vimeo.com/api/player.js'; sc.async=true; sc.onload=cb; document.head.appendChild(sc); }
+      loadAPI(function(){ try{ player=new window.Vimeo.Player(iframe); }catch(e){} });
+      function unmute(p){ try{ p.setVolume(1); }catch(e){} try{ p.setMuted(false); }catch(e){} try{ p.play(); }catch(e){} }
+      btn.addEventListener('click', function(){
+        btn.style.display='none';
+        if(player){ unmute(player); }
+        else { loadAPI(function(){ try{ player=new window.Vimeo.Player(iframe); unmute(player); }catch(e){} }); }
+      });
+    })();
+    </script>
   </section>
 
   <!-- COUNTDOWN -->

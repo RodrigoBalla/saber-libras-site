@@ -4479,113 +4479,77 @@
 
   <!-- Logo Saber Libras (topo) -->
   <div style="text-align:center;background:var(--dark);padding:20px 16px 8px">
-    <img src="assets/logo-saberlibras.png" alt="Saber Libras" style="height:50px;width:auto;display:inline-block" decoding="async" />
+    <img src="https://saber-libras-minicurso.netlify.app/assets/logo-saberlibras.png" alt="Saber Libras" style="height:50px;width:auto;display:inline-block" decoding="async" />
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO (VSL) -->
+  <section class="hero" style="padding:24px 0 40px">
     <div class="hero__bg"></div>
     <div class="hero__overlay"></div>
-    <div class="container--wide">
-      <div class="hero__row">
+    <div class="container">
+      <div style="max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:3">
 
-        <!-- LEFT COLUMN: EBOOKS + PRICE + BUTTON -->
-        <div class="hero__left-col">
+        <p style="font-family:var(--font-s);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--amber);margin-bottom:14px">Minicurso Práticas de Conversação em Libras</p>
 
-          <!-- EBOOKS MOCKUP -->
-          <div class="hero__ebook-wrap">
+        <h1 class="hero__title" style="font-size:clamp(1.7rem,5vw,2.8rem)">
+          Do Zero à <span>Interação com Surdos</span> em Apenas 10 Horas
+        </h1>
 
-            <!-- BÔNUS: Masterclass Libras Fácil -->
-            <div class="book-mockup book-mockup--bonus">
-              <div class="book-cover">
-                <div class="book-cover__accent book-cover__accent--green"></div>
-                <div class="book-cover__accent2 book-cover__accent2--green"></div>
-                <div class="book-cover__top">
-                  <span class="book-cover__label book-cover__label--green">Bônus</span>
-                  <span class="book-cover__label book-cover__label--kind">Masterclass</span>
-                  <div class="book-cover__title book-cover__title--sm">Libras<br/>Fácil</div>
-                  <div class="book-cover__divider book-cover__divider--green"></div>
-                  <div class="book-cover__sub">Expressões e sinais<br/>prontos pro<br/>dia a dia.</div>
-                </div>
-                <div class="book-cover__bottom">
-                  <img class="book-cover__logo" src="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" alt="Saber Libras" width="239" height="100" fetchpriority="high" decoding="async" />
-                  <span class="book-cover__author">Grátis na compra</span>
-                </div>
-              </div>
-            </div>
+        <p class="hero__sub" style="margin:16px auto 0;max-width:640px">
+          <strong>Assista o vídeo abaixo com o som ligado e descubra como se comunicar em Libras — mesmo começando do zero.</strong>
+        </p>
 
-            <!-- PRINCIPAL: Minicurso de Libras -->
-            <div class="book-mockup book-mockup--main">
-              <div class="book-cover">
-                <div class="book-cover__accent"></div>
-                <div class="book-cover__accent2"></div>
-                <div class="book-cover__top">
-                  <span class="book-cover__label">Minicurso</span>
-                  <div class="book-cover__title">Práticas de<br/>Conversação<br/>em Libras</div>
-                  <div class="book-cover__divider"></div>
-                </div>
-                <div class="book-cover__bottom">
-                  <img class="book-cover__logo" src="https://librasemdobro.com.br/wp-content/uploads/2025/01/LibrasemDobro_LOGO-17.png.webp" alt="Saber Libras" width="239" height="100" fetchpriority="high" decoding="async" />
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- PRICE & CTA UNDER EBOOKS -->
-          <div class="hero__price-box">
-            <div class="hero__offer-bar" id="offerBar" role="button" tabindex="0" aria-label="Minicurso + Bônus - Destacar materiais">
-              <span class="offer-bar__item offer-bar__pay">Minicurso</span>
-              <span class="offer-bar__item offer-bar__get">+ 3 Bônus</span>
-            </div>
-            <div class="hero__price-old">De R$689,00</div>
-            <div class="hero__price-lbl">Hoje apenas</div>
-            <div class="hero__price-val"><sup>R$</sup>47</div>
-            <div style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1.05rem;margin-top:2px;text-align:center">ou 6x de R$8,82</div>
-            <ul class="hero__includes">
-              <li>✓ 5 aulas práticas de conversação</li>
-              <li>✓ Método INV (Imersão Neurovisual)</li>
-              <li>✓ Certificado de 10h + acesso vitalício</li>
-              <li>✓ 3 bônus exclusivos inclusos</li>
-            </ul>
-            <div class="hero__price-note">Acesso imediato · Garantia de 7 dias</div>
-          </div>
-
-          <div class="cta-stack">
-            <button class="btn btn--primary pulsing hero__cta-btn" onclick="openCheckout()" data-cta="hero_comprar_27">
-              QUERO APRENDER LIBRAS DO JEITO MAIS FÁCIL →
-            </button>
-            <button class="btn btn--ghost" onclick="openQuestModal()" data-cta="hero_cupom">
-              🎁 Quero meu cupom 10% OFF antes
+        <!-- VSL VIDEO -->
+        <div style="position:relative;max-width:820px;margin:26px auto 0;border-radius:16px;overflow:hidden;border:1px solid rgba(232,171,59,.25);box-shadow:0 30px 80px -30px rgba(0,0,0,.85)">
+          <div style="position:relative;padding-top:56.25%;background:#000">
+            <iframe id="vslPlayer" style="position:absolute;inset:0;width:100%;height:100%;border:0"
+              src="https://player.vimeo.com/video/1206996090?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&controls=0&playsinline=1"
+              title="Minicurso de Libras — Saber Libras"
+              allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <button id="vslUnmute" type="button" aria-label="Ativar o som do vídeo"
+              style="position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(8,20,39,.45);border:0;cursor:pointer;color:#fff;font-family:var(--font-s);font-weight:800;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)">
+              <span style="font-size:2.6rem;line-height:1;animation:vslPulse 1.8s ease-in-out infinite">🔊</span>
+              <span style="background:linear-gradient(180deg,#B32D5C,#8E2249);padding:14px 30px;border-radius:100px;font-size:clamp(.9rem,2.6vw,1.1rem);box-shadow:0 10px 34px rgba(179,45,92,.55);text-transform:uppercase;letter-spacing:.02em">▶ Toque para ativar o som</span>
+              <span style="font-size:.78rem;font-weight:600;opacity:.85">Seu vídeo já está rodando</span>
             </button>
           </div>
-          <p class="hero__cta-note"><span class="ico ico--sm"><svg><use href="#ico-lock"/></svg></span> Compra 100% segura · <span class="ico ico--sm"><svg><use href="#ico-card"/></svg></span> Cartão, Pix ou Boleto · <span class="ico ico--sm"><svg><use href="#ico-box"/></svg></span> Entrega imediata</p>
+        </div>
+        <style>@keyframes vslPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}</style>
 
-        </div><!-- /.hero__left-col -->
+        <!-- PRECO COMPACTO -->
+        <div style="margin:22px auto 0;display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.04);border:1px solid rgba(232,171,59,.22);border-radius:14px;padding:12px 22px">
+          <span style="color:var(--muted,#B9A9AE);text-decoration:line-through;font-size:.9rem">De R$689</span>
+          <span style="font-family:var(--font-h);font-weight:700;color:#fff;font-size:1.6rem"><sup style="font-size:.8rem;color:var(--amber)">R$</sup>47</span>
+          <span style="font-family:var(--font-h);font-weight:700;color:var(--amber);font-size:1rem">ou 6x de R$8,82</span>
+        </div>
 
-        <!-- RIGHT COLUMN: TEXT CONTENT -->
-        <div class="hero__content fade-in">
+        <div class="cta-stack" style="max-width:520px;margin:22px auto 0">
+          <button class="btn btn--primary pulsing" onclick="openCheckout()" data-cta="hero_comprar_27">
+            QUERO APRENDER LIBRAS DO JEITO MAIS FÁCIL →
+          </button>
+          <button class="btn btn--ghost" onclick="openQuestModal()" data-cta="hero_cupom">
+            🎁 Quero meu cupom 10% OFF antes
+          </button>
+        </div>
+        <p class="hero__cta-note" style="justify-content:center;display:flex"><span class="ico ico--sm"><svg><use href="#ico-lock"/></svg></span> Compra 100% segura · <span class="ico ico--sm"><svg><use href="#ico-card"/></svg></span> Cartão, Pix ou Boleto · <span class="ico ico--sm"><svg><use href="#ico-box"/></svg></span> Entrega imediata</p>
 
-          <p style="font-family:var(--font-s);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:var(--amber);margin-bottom:14px">Minicurso Práticas de Conversação em Libras</p>
+      </div>
+    </div>
 
-          <h1 class="hero__title">
-            Do Zero à<br/>
-            <span>Interação com Surdos</span><br/>
-            em Apenas 10 Horas
-          </h1>
-
-          <p class="hero__sub">
-            <strong>
-              Não perca mais tempo em cursos longos e complexos. Em apenas <span style="color:var(--amber)">10 horas</span> você aprende o essencial de Libras para se comunicar com surdos no atendimento e no dia a dia.
-            </strong>
-          </p>
-
-          <img src="assets/professoras/duas.jpg" alt="Professoras Camila e Alcione — Saber Libras" style="margin-top:24px;border-radius:16px;border:1px solid rgba(232,171,59,.2);width:100%;max-width:440px;box-shadow:0 20px 50px -24px rgba(0,0,0,.7)" loading="eager" decoding="async" />
-
-        </div><!-- /.hero__content -->
-
-      </div><!-- /.hero__row -->
-    </div><!-- /.container--wide -->
+    <script>
+    (function(){
+      var iframe=document.getElementById('vslPlayer'), btn=document.getElementById('vslUnmute'), player=null;
+      if(!iframe||!btn) return;
+      function loadAPI(cb){ if(window.Vimeo&&window.Vimeo.Player) return cb(); var sc=document.createElement('script'); sc.src='https://player.vimeo.com/api/player.js'; sc.async=true; sc.onload=cb; document.head.appendChild(sc); }
+      loadAPI(function(){ try{ player=new window.Vimeo.Player(iframe); }catch(e){} });
+      function unmute(p){ try{ p.setVolume(1); }catch(e){} try{ p.setMuted(false); }catch(e){} try{ p.play(); }catch(e){} }
+      btn.addEventListener('click', function(){
+        btn.style.display='none';
+        if(player){ unmute(player); }
+        else { loadAPI(function(){ try{ player=new window.Vimeo.Player(iframe); unmute(player); }catch(e){} }); }
+      });
+    })();
+    </script>
   </section>
 
   <!-- COUNTDOWN -->
@@ -4707,11 +4671,11 @@
 
       <div class="quem-somos__profs">
         <figure style="margin:0">
-          <img src="assets/professoras/camila.jpg" alt="Professora Camila Zilio Lisbôa" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+          <img src="https://saber-libras-minicurso.netlify.app/assets/professoras/camila.jpg" alt="Professora Camila Zilio Lisbôa" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
           <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Camila <span style="color:#B9A9AE;font-weight:400">(ouvinte)</span></figcaption>
         </figure>
         <figure style="margin:0">
-          <img src="assets/professoras/alcione.jpg" alt="Professora Alcione Dela Justina" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
+          <img src="https://saber-libras-minicurso.netlify.app/assets/professoras/alcione.jpg" alt="Professora Alcione Dela Justina" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2);aspect-ratio:3/4;object-fit:cover" loading="lazy" decoding="async" />
           <figcaption style="text-align:center;margin-top:8px;font-family:var(--font-s);font-weight:600;font-size:.84rem">Alcione <span style="color:#B9A9AE;font-weight:400">(surda)</span></figcaption>
         </figure>
       </div>
@@ -4963,47 +4927,47 @@
     <div class="logos-marquee-wrap">
       <div class="logos-marquee-track" id="logos-marquee-track">
         <!-- set A · Empresas REAIS atendidas pela Saber Libras -->
-        <div class="logo-marquee-item"><img src="assets/logos/cocacola.png" alt="Coca-Cola" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/ram.png" alt="RAM" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/samsung.png" alt="Samsung" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/petrobras.png" alt="Petrobras" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/ifood.png" alt="iFood" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/petz.png" alt="Petz" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/salinas.png" alt="Salinas Maragogi" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/jbs.png" alt="JBS" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/flora.png" alt="Flora" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/somos.png" alt="Somos Educação" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/aes.png" alt="AES Brasil" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/brisa.png" alt="Maragogi · Brisa Hotel" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/cogna.png" alt="Cogna Educação" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/bosch.png" alt="Bosch" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/wolpac.png" alt="Wolpac" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/mavsa.png" alt="Mavsa" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/nuts.png" alt="Nuts" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/raizen.png" alt="Raízen" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/gav.png" alt="GAV Resorts" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/safeeds.png" alt="Safeeds" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/cocacola.png" alt="Coca-Cola" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/ram.png" alt="RAM" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/samsung.png" alt="Samsung" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/petrobras.png" alt="Petrobras" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/ifood.png" alt="iFood" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/petz.png" alt="Petz" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/salinas.png" alt="Salinas Maragogi" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/jbs.png" alt="JBS" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/flora.png" alt="Flora" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/somos.png" alt="Somos Educação" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/aes.png" alt="AES Brasil" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/brisa.png" alt="Maragogi · Brisa Hotel" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/cogna.png" alt="Cogna Educação" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/bosch.png" alt="Bosch" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/wolpac.png" alt="Wolpac" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/mavsa.png" alt="Mavsa" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/nuts.png" alt="Nuts" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/raizen.png" alt="Raízen" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/gav.png" alt="GAV Resorts" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/safeeds.png" alt="Safeeds" decoding="async" /></div>
         <!-- set B (duplicate for seamless loop) -->
-        <div class="logo-marquee-item"><img src="assets/logos/cocacola.png" alt="Coca-Cola" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/ram.png" alt="RAM" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/samsung.png" alt="Samsung" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/petrobras.png" alt="Petrobras" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/ifood.png" alt="iFood" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/petz.png" alt="Petz" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/salinas.png" alt="Salinas Maragogi" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/jbs.png" alt="JBS" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/flora.png" alt="Flora" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/somos.png" alt="Somos Educação" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/aes.png" alt="AES Brasil" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/brisa.png" alt="Maragogi · Brisa Hotel" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/cogna.png" alt="Cogna Educação" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/bosch.png" alt="Bosch" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/wolpac.png" alt="Wolpac" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/mavsa.png" alt="Mavsa" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/nuts.png" alt="Nuts" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/raizen.png" alt="Raízen" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/gav.png" alt="GAV Resorts" decoding="async" /></div>
-        <div class="logo-marquee-item"><img src="assets/logos/safeeds.png" alt="Safeeds" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/cocacola.png" alt="Coca-Cola" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/ram.png" alt="RAM" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/samsung.png" alt="Samsung" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/petrobras.png" alt="Petrobras" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/ifood.png" alt="iFood" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/petz.png" alt="Petz" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/salinas.png" alt="Salinas Maragogi" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/jbs.png" alt="JBS" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/flora.png" alt="Flora" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/somos.png" alt="Somos Educação" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/aes.png" alt="AES Brasil" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/brisa.png" alt="Maragogi · Brisa Hotel" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/cogna.png" alt="Cogna Educação" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/bosch.png" alt="Bosch" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/wolpac.png" alt="Wolpac" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/mavsa.png" alt="Mavsa" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/nuts.png" alt="Nuts" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/raizen.png" alt="Raízen" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/gav.png" alt="GAV Resorts" decoding="async" /></div>
+        <div class="logo-marquee-item"><img src="https://saber-libras-minicurso.netlify.app/assets/logos/safeeds.png" alt="Safeeds" decoding="async" /></div>
       </div>
     </div>
   </section>
@@ -5016,11 +4980,11 @@
       <p class="section-sub text-center" style="margin:12px auto 0">Veja o que alunas e alunos estão dizendo sobre o minicurso de Libras.</p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1140px;margin:30px auto 0">
-        <img src="assets/depoimentos/dep1.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
-        <img src="assets/depoimentos/dep2.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
-        <img src="assets/depoimentos/dep3.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
-        <img src="assets/depoimentos/dep4.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
-        <img src="assets/depoimentos/dep5.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
+        <img src="https://saber-libras-minicurso.netlify.app/assets/depoimentos/dep1.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
+        <img src="https://saber-libras-minicurso.netlify.app/assets/depoimentos/dep2.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
+        <img src="https://saber-libras-minicurso.netlify.app/assets/depoimentos/dep3.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
+        <img src="https://saber-libras-minicurso.netlify.app/assets/depoimentos/dep4.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
+        <img src="https://saber-libras-minicurso.netlify.app/assets/depoimentos/dep5.jpg" alt="Depoimento real de aluna no WhatsApp" loading="lazy" decoding="async" style="width:100%;border-radius:14px;border:1px solid rgba(232,171,59,.2)" />
       </div>
     </div>
   </section>
@@ -5153,7 +5117,7 @@
 
   <div class="footer">
     <div class="footer__text">
-      <img src="assets/logo-saberlibras.png" alt="Saber Libras" style="height:42px;width:auto;display:block;margin:0 auto 16px;opacity:.95" decoding="async" /><br/>
+      <img src="https://saber-libras-minicurso.netlify.app/assets/logo-saberlibras.png" alt="Saber Libras" style="height:42px;width:auto;display:block;margin:0 auto 16px;opacity:.95" decoding="async" /><br/>
       © 2026 Saber Libras · Todos os direitos reservados<br/>
       CNPJ: 41.753.432/0001-50<br/>
       Este produto é destinado a fins educacionais. Resultados podem variar conforme o esforço de cada pessoa.<br/>
@@ -5546,7 +5510,7 @@
       <div class="oe-platform__grid">
         <div class="oe-platform__card">
           <div class="oe-platform__shot">
-            <img src="assets/plataforma/dashboard.jpg" alt="Tela de boas-vindas da plataforma EJC" loading="lazy" decoding="async" />
+            <img src="https://saber-libras-minicurso.netlify.app/assets/plataforma/dashboard.jpg" alt="Tela de boas-vindas da plataforma EJC" loading="lazy" decoding="async" />
           </div>
           <div class="oe-platform__caption">
             <strong>Plataforma própria</strong>
@@ -5556,7 +5520,7 @@
 
         <div class="oe-platform__card">
           <div class="oe-platform__shot">
-            <img src="assets/plataforma/aulas.jpg" alt="Player de vídeo da aula com sumário dos 7 módulos" loading="lazy" decoding="async" />
+            <img src="https://saber-libras-minicurso.netlify.app/assets/plataforma/aulas.jpg" alt="Player de vídeo da aula com sumário dos 7 módulos" loading="lazy" decoding="async" />
           </div>
           <div class="oe-platform__caption">
             <strong>7 módulos completos com aulas em vídeo</strong>
@@ -5566,7 +5530,7 @@
 
         <div class="oe-platform__card">
           <div class="oe-platform__shot">
-            <img src="assets/plataforma/comunidade.png" alt="Comunidade interna da Saber Libras" loading="lazy" decoding="async" />
+            <img src="https://saber-libras-minicurso.netlify.app/assets/plataforma/comunidade.png" alt="Comunidade interna da Saber Libras" loading="lazy" decoding="async" />
           </div>
           <div class="oe-platform__caption">
             <strong>Comunidade ativa com 5 canais</strong>
@@ -5576,7 +5540,7 @@
 
         <div class="oe-platform__card">
           <div class="oe-platform__shot">
-            <img src="assets/plataforma/trilhas.png" alt="Trilha de aprendizado guiada com progresso" loading="lazy" decoding="async" />
+            <img src="https://saber-libras-minicurso.netlify.app/assets/plataforma/trilhas.png" alt="Trilha de aprendizado guiada com progresso" loading="lazy" decoding="async" />
           </div>
           <div class="oe-platform__caption">
             <strong>Trilhas de aprendizado guiadas</strong>

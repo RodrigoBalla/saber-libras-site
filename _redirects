@@ -9,3 +9,15 @@
 /oferta-especial/  /index.html#oferta-especial   200
 /admin             /index.html#admin             200
 /admin/            /index.html#admin             200
+/vsl     /vsl.html   200
+/vsl/    /vsl.html   200
+
+# Rotas curtas A/B
+/A     /index.html   200
+/A/    /index.html   200
+/B     /vsl.html     200
+/B/    /vsl.html     200
+/C     /pageC.html   200
+/C/    /pageC.html   200
+/D     /pageD.html   200
+/D/    /pageD.html   200
