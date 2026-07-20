@@ -16,6 +16,18 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# Variantes servidas com assets absolutos, buscadas cross-origin
+# na hora de publicar no domínio do cliente.
+[[headers]]
+  for = "/pagec-hostgator.html"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/paged-hostgator.html"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
 [[redirects]]
   from = "/obrigado"
   to   = "/index.html#obrigado"

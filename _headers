@@ -2,3 +2,7 @@
   Access-Control-Allow-Origin: *
 /vsl-hostgator.html
   Access-Control-Allow-Origin: *
+/pagec-hostgator.html
+  Access-Control-Allow-Origin: *
+/paged-hostgator.html
+  Access-Control-Allow-Origin: *
